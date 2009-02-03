@@ -21,5 +21,4 @@ Provides templates to include site news feeds in your Jifty app. See L<Jifty::Pl
 
 =cut
 
-
 1;
