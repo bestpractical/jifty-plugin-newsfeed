@@ -1,8 +1,11 @@
 use warnings;
 use strict;
+
 package Jifty::Plugin::NewsFeed;
 use base qw'Jifty::Plugin';
 __PACKAGE__->mk_accessors(qw(config));
+
+our $VERSION = '0.01';
 
 =head1 NAME
 
