@@ -68,8 +68,7 @@ template 'display_feed' => sub {
 	use Cache::File;
 
 	my $plugin = Jifty->find_plugin( 'Jifty::Plugin::NewsFeed' );
-	warn $plugin->config->{CacheRoot};
-
+    my $cache_root = $plugin->config->{CacheRoot} || '/tmp';
 
 	my $c1 = Cache::File->new( cache_root =>  $plugin->config->{CacheRoot}  );
 	my $feed_xml = $c1->get( 'feed_url' );
