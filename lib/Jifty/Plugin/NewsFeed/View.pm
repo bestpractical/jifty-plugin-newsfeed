@@ -70,7 +70,13 @@ template 'display_feed' => sub {
 	my $plugin = Jifty->find_plugin( 'Jifty::Plugin::NewsFeed' );
     my $cache_root = $plugin->config->{CacheRoot} || '/tmp';
 
-	my $c1 = Cache::File->new( cache_root =>  $plugin->config->{CacheRoot}  );
+    if( ! -w $cache_root ) {
+        Jifty->log->warn( 'NewsFeed plugin can not write to ' . $cache_root . '. Permission Denied.'  );
+        return;
+    }
+
+
+	my $c1 = Cache::File->new( cache_root =>  $cache_root  );
 	my $feed_xml = $c1->get( 'feed_url' );
  	unless ($feed_xml) {
 		Jifty->log->info('Fetch feed:' . $feed_url );
