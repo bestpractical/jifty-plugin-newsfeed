@@ -130,7 +130,7 @@ template 'display_feed' => sub {
 			my $link  = $entry->link;
 
 			span { { class is $options->{item_class} || 'feed-entry' }; 
-				outs_raw (qq|<a class="feed-link" href="$link">$title</a>|); } 
+				outs_raw (qq|<a class="feed-link" target="_blank" href="$link">$title</a>|); } 
 					if ( $title );
 		}
 	};
